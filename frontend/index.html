@@ -180,7 +180,8 @@
             position: relative;
         }
         
-        .form-group input {
+        .form-group input,
+        .form-group textarea {
             width: 100%;
             padding: 20px 24px;
             border: 2px solid #e5e7eb;
@@ -188,9 +189,16 @@
             font-size: 1.1em;
             transition: all 0.3s ease;
             background: #f9fafb;
+            resize: vertical;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            font-family: inherit;
         }
         
-        .form-group input:focus {
+        .form-group input:focus,
+        .form-group textarea:focus {
             outline: none;
             border-color: #667eea;
             background: white;
@@ -380,6 +388,103 @@
         .feature-card p {
             color: #666;
             line-height: 1.8;
+        }
+
+        /* Thoughts Section - New Addition */
+        .thoughts-section {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, #ffffff, #f9fafb);
+        }
+
+        .thoughts-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: 0 auto;
+            animation: scaleIn 0.8s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .thoughts-card h2 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .thoughts-card p.intro {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+            text-align: center;
+            line-height: 1.7;
+        }
+
+        .thoughts-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .thoughts-form .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #1a1a1a;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .thoughts-form .form-group input {
+            padding: 18px 20px;
+        }
+
+        .thoughts-form .form-group textarea {
+            min-height: 150px;
+            padding: 18px 20px;
+        }
+
+        .thoughts-submit-btn {
+            padding: 22px;
+            background: linear-gradient(135deg, #43e97b, #34d399);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(67, 233, 123, 0.3);
+        }
+
+        .thoughts-submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(67, 233, 123, 0.4);
+        }
+
+        .thoughts-success-message {
+            display: none;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 30px;
+            animation: slideDown 0.5s ease;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .thoughts-success-message h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto;
         }
         
         /* Enhanced Pricing section with better typography */
@@ -576,6 +681,7 @@
             .tagline { font-size: 1.5em; }
             .subtagline { font-size: 1.1em; }
             .waitlist-card { padding: 40px 30px; }
+            .thoughts-card { padding: 40px 30px; }
             .section-title { font-size: 2.2em; }
             .price { font-size: 3.5em; }
             .features-grid { grid-template-columns: 1fr; gap: 30px; }
@@ -691,6 +797,51 @@
                     <div class="feature-icon">🔌</div>
                     <h3>Developer-Friendly</h3>
                     <p>RESTful APIs, WebSocket streams, Python/Go SDKs. Integrate your algorithms in hours, not months.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thoughts Section - New Addition -->
+    <div class="thoughts-section">
+        <div class="container">
+            <div class="thoughts-card">
+                <h2>Leave Your Thoughts</h2>
+                <p class="intro">Help shape HFT Cloud! Share your ideas, feature requests, or feedback. Every suggestion counts toward building the ultimate trading infrastructure.</p>
+                
+                <form id="thoughtsForm" class="thoughts-form">
+                    <div class="form-group">
+                        <label for="thoughtsEmail">Email (Optional - for follow-up)</label>
+                        <input 
+                            type="email" 
+                            id="thoughtsEmail" 
+                            placeholder="your.email@example.com" 
+                            autocomplete="email"
+                            aria-label="Email address for follow-up"
+                        >
+                    </div>
+                    <div class="form-group">
+                        <label for="thoughtsMessage">Your Thoughts / Ideas</label>
+                        <textarea 
+                            id="thoughtsMessage" 
+                            placeholder="Tell us what features you'd love to see, pain points in current trading setups, or any wild ideas for AI-powered trading..." 
+                            required
+                            aria-label="Your thoughts and ideas"
+                        ></textarea>
+                    </div>
+                    <button type="submit" class="thoughts-submit-btn">
+                        Share Your Ideas
+                    </button>
+                </form>
+
+                <div class="thoughts-success-message" id="thoughtsSuccessMessage">
+                    <h3>
+                        <span class="checkmark">✓</span>
+                        Thank You!
+                    </h3>
+                    <p style="line-height: 1.6; margin-top: 15px;">
+                        Your thoughts have been shared. We'll review it and reach out if we have questions. Together, we're building something amazing. 🚀
+                    </p>
                 </div>
             </div>
         </div>
@@ -823,12 +974,73 @@
             }
         });
 
+        // New: Thoughts Form Submission
+        document.getElementById('thoughtsForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('thoughtsEmail');
+            const messageInput = document.getElementById('thoughtsMessage');
+            const submitBtn = document.querySelector('.thoughts-submit-btn');
+            const email = emailInput.value.trim().toLowerCase();
+            const message = messageInput.value.trim();
+
+            if (!message || message.length < 10) {
+                messageInput.style.borderColor = '#ef4444';
+                messageInput.style.background = '#fef2f2';
+                setTimeout(() => {
+                    messageInput.style.borderColor = '#e5e7eb';
+                    messageInput.style.background = '#f9fafb';
+                }, 2000);
+                return;
+            }
+
+            if (email && !isValidEmail(email)) {
+                emailInput.style.borderColor = '#ef4444';
+                emailInput.style.background = '#fef2f2';
+                setTimeout(() => {
+                    emailInput.style.borderColor = '#e5e7eb';
+                    emailInput.style.background = '#f9fafb';
+                }, 2000);
+                return;
+            }
+            
+            submitBtn.innerHTML = '<span class="loading"></span> Sharing Ideas...';
+            submitBtn.disabled = true;
+            
+            try {
+                const success = await saveThoughts(email, message);
+                
+                if (success) {
+                    document.getElementById('thoughtsSuccessMessage').style.display = 'block';
+                    emailInput.value = '';
+                    messageInput.value = '';
+                    emailInput.style.borderColor = '#10b981';
+                    messageInput.style.borderColor = '#10b981';
+                    
+                    setTimeout(() => {
+                        document.getElementById('thoughtsSuccessMessage').style.display = 'none';
+                        emailInput.style.borderColor = '#e5e7eb';
+                        messageInput.style.borderColor = '#e5e7eb';
+                    }, 10000);
+                } else {
+                    alert('There was an error submitting your thoughts. Please try again.');
+                }
+            } catch (error) {
+                console.error('Thoughts submission error:', error);
+                alert('Something went wrong. Please try again.');
+            } finally {
+                submitBtn.innerHTML = 'Share Your Ideas';
+                submitBtn.disabled = false;
+            }
+        });
+
         function isValidEmail(email) {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         }
 
         const API_BASE_URL = 'https://hft-infra.onrender.com/api'; 
+        // const API_BASE_URL = 'http://localhost:3000/api'; 
         
         async function saveToDatabase(email) {
             try {
@@ -853,6 +1065,32 @@
             } catch (error) {
                 console.error('Database error:', error);
                 alert('Could not connect to server. Please check your connection and try again.');
+                return false;
+            }
+        }
+
+        // New: Save Thoughts to Database
+        async function saveThoughts(email, message) {
+            try {
+                const response = await fetch(`${API_BASE_URL}/thoughts`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, message })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.success) {
+                    console.log('✓ Thoughts saved to MongoDB:', { email, message: message.substring(0, 50) + '...' });
+                    return true;
+                } else {
+                    console.error('Failed to save thoughts:', data.message);
+                    return false;
+                }
+            } catch (error) {
+                console.error('Database error for thoughts:', error);
                 return false;
             }
         }
