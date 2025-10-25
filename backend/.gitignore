@@ -1,0 +1,44 @@
+.env
+.env.local
+.env.production
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependencies
+package-lock.json
+yarn.lock
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backup files
+backup-*.json
+backup-*.csv
+waitlist-*.csv
+
+# Test files
+test-emails.txt
+dummy-data.json
+
+# Build files
+dist/
+build/
+
+# Temporary files
+tmp/
+temp/
