@@ -18,38 +18,47 @@
             overflow-x: hidden;
         }
         
-        /* Animated gradient background */
+        /* Enhanced Animated gradient background with better flow */
         .hero-section {
             position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe, #43e97b);
+            background-size: 600% 600%;
+            animation: gradientShift 20s ease infinite;
             overflow: hidden;
         }
         
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            25% { background-position: 100% 50%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
             100% { background-position: 0% 50%; }
         }
         
-        /* Floating particles */
+        /* Enhanced floating particles with glow and varied sizes */
         .particle {
             position: absolute;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            animation: float 20s infinite;
+            animation: float 25s infinite linear;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            25% { transform: translateY(-50px) translateX(50px); }
-            50% { transform: translateY(-100px) translateX(-30px); }
-            75% { transform: translateY(-50px) translateX(-50px); }
+            0% { 
+                transform: translateY(100vh) translateX(0) rotate(0deg); 
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                transform: translateY(-100vh) translateX(100px) rotate(360deg); 
+                opacity: 0;
+            }
         }
         
         .hero-content {
@@ -62,15 +71,185 @@
         }
         
         .logo {
-            font-size: 3.5em;
+            font-size: 4em;
             font-weight: 900;
             margin-bottom: 20px;
             letter-spacing: -2px;
             text-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
             animation: fadeInDown 1s ease;
+            background: linear-gradient(135deg, #ffffff, #f0f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .tagline {
+            font-size: 2em;
+            margin-bottom: 15px;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        
+        .subtagline {
+            font-size: 1.3em;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Enhanced waitlist form card with glassmorphism and better shadows */
+        .waitlist-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(30px);
+            border-radius: 24px;
+            padding: 50px 60px;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+            max-width: 600px;
+            margin: 0 auto;
+            animation: scaleIn 0.8s ease 0.6s both;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8) rotate(-2deg);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+        
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 25px;
+            font-size: 0.95em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+            box-shadow: 0 4px 15px rgba(245, 87, 108, 0.3);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 87, 108, 0.7); }
+            50% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(245, 87, 108, 0); }
+        }
+        
+        .waitlist-card h2 {
+            color: #667eea;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .waitlist-card p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 20px 24px;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            background: #f9fafb;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+        
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .success-message {
+            display: none;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin-top: 25px;
+            animation: slideDown 0.5s ease;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        
+        @keyframes slideDown {
             from {
                 opacity: 0;
                 transform: translateY(-30px);
@@ -81,174 +260,31 @@
             }
         }
         
-        .tagline {
-            font-size: 1.8em;
-            margin-bottom: 15px;
-            font-weight: 300;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-            animation: fadeInUp 1s ease 0.2s both;
-        }
-        
-        .subtagline {
-            font-size: 1.2em;
-            margin-bottom: 50px;
-            opacity: 0.95;
-            animation: fadeInUp 1s ease 0.4s both;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Waitlist form card */
-        .waitlist-card {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 50px 60px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            margin: 0 auto;
-            animation: scaleIn 0.8s ease 0.6s both;
-        }
-        
-        @keyframes scaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-        
-        .badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #f093fb, #f5576c);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 600;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(245, 87, 108, 0.7); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(245, 87, 108, 0); }
-        }
-        
-        .waitlist-card h2 {
-            color: #667eea;
-            font-size: 2em;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        .waitlist-card p {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 1.05em;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 18px 20px;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            font-size: 1.05em;
-            transition: all 0.3s ease;
-            background: #f9fafb;
-        }
-        
-        .form-group input:focus {
-            outline: none;
-            border-color: #667eea;
-            background: white;
-            box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-size: 1.1em;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
-        }
-        
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-        
-        .success-message {
-            display: none;
-            background: linear-gradient(135deg, #10b981, #059669);
-            color: white;
-            padding: 30px;
-            border-radius: 16px;
-            margin-top: 25px;
-            animation: slideDown 0.5s ease;
-        }
-        
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
         .success-message h3 {
-            font-size: 1.5em;
+            font-size: 1.6em;
             margin-bottom: 10px;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
         }
         
         .checkmark {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             background: white;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             color: #10b981;
-            font-size: 1.2em;
+            font-size: 1.3em;
+            font-weight: bold;
         }
         
-        /* Features section */
+        /* Features section with improved grid and hover effects */
         .features-section {
-            padding: 100px 20px;
+            padding: 120px 20px;
             background: linear-gradient(180deg, #f9fafb, #ffffff);
         }
         
@@ -259,47 +295,83 @@
         
         .section-title {
             text-align: center;
-            font-size: 2.5em;
+            font-size: 2.8em;
             color: #1a1a1a;
             margin-bottom: 60px;
             font-weight: 800;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
         }
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 40px;
             margin-bottom: 80px;
         }
         
         .feature-card {
             background: white;
-            padding: 40px;
-            border-radius: 20px;
+            padding: 45px;
+            border-radius: 24px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
             border: 1px solid #f0f0f0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
         }
         
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+            transform: translateY(-12px) rotateX(2deg);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
         }
         
         .feature-icon {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 16px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.8em;
-            margin-bottom: 20px;
+            font-size: 2em;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(360deg);
         }
         
         .feature-card h3 {
-            font-size: 1.4em;
+            font-size: 1.5em;
             color: #1a1a1a;
             margin-bottom: 15px;
             font-weight: 700;
@@ -310,29 +382,47 @@
             line-height: 1.8;
         }
         
-        /* Pricing section */
+        /* Enhanced Pricing section with better typography */
         .pricing-section {
-            padding: 100px 20px;
+            padding: 120px 20px;
             background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
             text-align: center;
+            position: relative;
+        }
+        
+        .pricing-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.05"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.05"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.03"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.1;
         }
         
         .pricing-card {
             background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
+            backdrop-filter: blur(30px);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
-            padding: 60px;
+            border-radius: 28px;
+            padding: 70px;
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
+            z-index: 1;
         }
         
         .price {
-            font-size: 4em;
+            font-size: 4.5em;
             font-weight: 900;
             margin: 20px 0;
             line-height: 1;
+            background: linear-gradient(135deg, #ffffff, #f0f0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .price-period {
@@ -342,70 +432,89 @@
         }
         
         .discount-text {
-            font-size: 1.3em;
+            font-size: 1.4em;
             margin: 20px 0;
-            padding: 15px;
+            padding: 18px;
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
+            border-radius: 16px;
             font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
         
         .pricing-features {
             text-align: left;
             margin-top: 30px;
+            list-style: none;
         }
         
         .pricing-features li {
-            padding: 12px 0;
-            font-size: 1.1em;
+            padding: 15px 0;
+            font-size: 1.15em;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .pricing-features li:hover {
+            color: #f0f0ff;
         }
         
         .pricing-features li::before {
             content: "✓";
             background: rgba(255, 255, 255, 0.2);
-            width: 28px;
-            height: 28px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+            font-weight: bold;
+            font-size: 1.2em;
         }
         
-        /* Stats section */
+        /* Enhanced Stats section with counters */
         .stats-section {
-            padding: 80px 20px;
+            padding: 100px 20px;
             background: #1a1a1a;
             color: white;
         }
         
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
             text-align: center;
         }
         
         .stat-number {
-            font-size: 3.5em;
+            font-size: 4em;
             font-weight: 900;
             color: #667eea;
             margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-number.animate {
+            animation: countUp 1s ease-out;
+        }
+        
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
         }
         
         .stat-label {
-            font-size: 1.1em;
+            font-size: 1.2em;
             opacity: 0.8;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
         
-        /* Footer */
+        /* Footer with better links */
         .footer {
-            padding: 60px 20px;
+            padding: 80px 20px 40px;
             background: #0a0a0a;
             color: #999;
             text-align: center;
@@ -419,62 +528,77 @@
         .footer h3 {
             color: white;
             margin-bottom: 15px;
-            font-size: 1.5em;
+            font-size: 1.7em;
         }
         
         .footer-links {
-            margin: 30px 0;
+            margin: 40px 0;
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 40px;
             flex-wrap: wrap;
         }
         
         .footer-links a {
             color: #667eea;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
         }
         
         .footer-links a:hover {
             color: #764ba2;
+            background: rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
         }
         
-        /* Loading state */
+        /* Loading state with better spinner */
         .loading {
             display: inline-block;
-            width: 20px;
-            height: 20px;
+            width: 24px;
+            height: 24px;
             border: 3px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             border-top-color: white;
             animation: spin 1s linear infinite;
+            margin-right: 10px;
         }
         
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
         
-        /* Responsive */
+        /* Improved Responsive Design */
         @media (max-width: 768px) {
-            .logo { font-size: 2.5em; }
-            .tagline { font-size: 1.3em; }
-            .subtagline { font-size: 1em; }
+            .logo { font-size: 3em; }
+            .tagline { font-size: 1.5em; }
+            .subtagline { font-size: 1.1em; }
             .waitlist-card { padding: 40px 30px; }
-            .section-title { font-size: 2em; }
-            .price { font-size: 3em; }
+            .section-title { font-size: 2.2em; }
+            .price { font-size: 3.5em; }
             .features-grid { grid-template-columns: 1fr; gap: 30px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .footer-links { gap: 20px; }
+        }
+        
+        @media (max-width: 480px) {
+            .stats-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
+    <!-- Hero Section with more particles -->
     <div class="hero-section">
-        <!-- Animated particles -->
-        <div class="particle" style="width: 80px; height: 80px; top: 10%; left: 10%; animation-delay: 0s;"></div>
-        <div class="particle" style="width: 60px; height: 60px; top: 70%; left: 80%; animation-delay: 3s;"></div>
-        <div class="particle" style="width: 100px; height: 100px; top: 40%; left: 70%; animation-delay: 6s;"></div>
-        <div class="particle" style="width: 50px; height: 50px; top: 80%; left: 20%; animation-delay: 9s;"></div>
+        <!-- Enhanced Animated particles -->
+        <div class="particle" style="width: 100px; height: 100px; left: 10%; animation-delay: 0s;"></div>
+        <div class="particle" style="width: 80px; height: 80px; left: 20%; animation-delay: 5s;"></div>
+        <div class="particle" style="width: 60px; height: 60px; left: 30%; animation-delay: 10s;"></div>
+        <div class="particle" style="width: 120px; height: 120px; left: 60%; animation-delay: 2s;"></div>
+        <div class="particle" style="width: 70px; height: 70px; left: 70%; animation-delay: 7s;"></div>
+        <div class="particle" style="width: 90px; height: 90px; left: 80%; animation-delay: 12s;"></div>
+        <div class="particle" style="width: 50px; height: 50px; left: 90%; animation-delay: 15s;"></div>
         
         <div class="hero-content">
             <div class="logo">⚡ HFT Cloud</div>
@@ -494,6 +618,7 @@
                             placeholder="Enter your email address" 
                             required
                             autocomplete="email"
+                            aria-label="Email address"
                         >
                     </div>
                     <button type="submit" class="submit-btn" id="submitBtn">
@@ -501,7 +626,7 @@
                     </button>
                 </form>
                 
-                <div class="success-message" id="successMessage">
+                <div class="success-message" id="successMessage" role="alert" aria-live="polite">
                     <h3>
                         <span class="checkmark">✓</span>
                         Welcome Aboard!
@@ -578,12 +703,12 @@
             
             <div class="pricing-card">
                 <div class="price">
-                    $29
+                    ₹4,999
                     <span class="price-period">/month</span>
                 </div>
                 
                 <div class="discount-text">
-                    Founding Members: 50% OFF Forever → Just $14.50/month
+                    Founding Members: 50% OFF Forever → Just ₹2,499/month
                 </div>
                 
                 <ul class="pricing-features">
@@ -597,13 +722,12 @@
                 </ul>
                 
                 <p style="margin-top: 30px; opacity: 0.9; font-size: 0.95em;">
-                    Live trading: Usage-based at $0.001 per API call (coming in production)
+                    Live trading: Usage-based at ₹0.08 per API call (coming in production)
                 </p>
             </div>
         </div>
     </div>
 
-    <!-- Stats Section -->
     <div class="stats-section">
         <div class="container">
             <div class="stats-grid">
@@ -620,14 +744,13 @@
                     <div class="stat-label">Global Exchanges</div>
                 </div>
                 <div>
-                    <div class="stat-number">$14.50</div>
+                    <div class="stat-number">₹499</div>
                     <div class="stat-label">Per Month</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
         <div class="footer-content">
             <h3>HFT Cloud</h3>
@@ -648,44 +771,45 @@
     </div>
 
     <script>
-        // Initialize on page load
         document.addEventListener('DOMContentLoaded', async function() {
             await loadSignupCount();
+            animateStatsOnScroll();
         });
 
-        // Handle form submission
+        // Enhanced form submission with better UX
         document.getElementById('waitlistForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const emailInput = document.getElementById('emailInput');
             const submitBtn = document.getElementById('submitBtn');
             const email = emailInput.value.trim().toLowerCase();
-            
-            // Validate email
+
             if (!isValidEmail(email)) {
-                alert('Please enter a valid email address');
+                emailInput.style.borderColor = '#ef4444';
+                emailInput.style.background = '#fef2f2';
+                setTimeout(() => {
+                    emailInput.style.borderColor = '#e5e7eb';
+                    emailInput.style.background = '#f9fafb';
+                }, 2000);
                 return;
             }
             
-            // Show loading state
-            submitBtn.innerHTML = '<span class="loading"></span>';
+            submitBtn.innerHTML = '<span class="loading"></span> Claiming Spot...';
             submitBtn.disabled = true;
             
             try {
-                // Save to persistent storage
                 const success = await saveToDatabase(email);
                 
                 if (success) {
-                    // Show success message
                     document.getElementById('successMessage').style.display = 'block';
                     emailInput.value = '';
+                    emailInput.style.borderColor = '#10b981';
                     
-                    // Update counter
                     await loadSignupCount();
                     
-                    // Hide success message after 15 seconds
                     setTimeout(() => {
                         document.getElementById('successMessage').style.display = 'none';
+                        emailInput.style.borderColor = '#e5e7eb';
                     }, 15000);
                 } else {
                     alert('This email is already registered or there was an error. Please try again.');
@@ -694,22 +818,18 @@
                 console.error('Signup error:', error);
                 alert('Something went wrong. Please try again.');
             } finally {
-                // Reset button
                 submitBtn.innerHTML = 'Claim Your Spot';
                 submitBtn.disabled = false;
             }
         });
 
-        // Email validation
         function isValidEmail(email) {
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         }
 
-        // API Configuration - Update this with your deployed backend URL
-        const API_BASE_URL = 'https://hft-infra.onrender.com/api'; // Change to your deployed URL
+        const API_BASE_URL = 'https://hft-infra.onrender.com/api'; 
         
-        // Save email to MongoDB database
         async function saveToDatabase(email) {
             try {
                 const response = await fetch(`${API_BASE_URL}/waitlist`, {
@@ -745,8 +865,9 @@
                 
                 if (data.success) {
                     const count = data.count || 0;
-                    document.getElementById('signupCount').textContent = count;
-                    document.getElementById('totalSignups').textContent = count;
+                    document.getElementById('signupCount').textContent = count.toLocaleString();
+                    document.getElementById('totalSignups').textContent = count.toLocaleString();
+                    document.getElementById('totalSignups').classList.add('animate');
                 }
             } catch (error) {
                 console.log('Could not load count from server');
@@ -755,7 +876,23 @@
             }
         }
 
-        // Admin function to view all emails (requires API key)
+        // Animate stats on scroll
+        function animateStatsOnScroll() {
+            const statsSection = document.querySelector('.stats-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const numbers = entry.target.querySelectorAll('.stat-number');
+                        numbers.forEach(num => num.classList.add('animate'));
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            observer.observe(statsSection);
+        }
+
+        // Admin functions remain the same
         async function viewAllSignups(apiKey) {
             try {
                 const response = await fetch(`${API_BASE_URL}/waitlist/all`, {
@@ -779,7 +916,6 @@
             }
         }
 
-        // Admin function to export CSV (requires API key)
         async function exportSignupsToCSV(apiKey) {
             try {
                 window.open(`${API_BASE_URL}/waitlist/export?api_key=${apiKey}`, '_blank');
@@ -789,7 +925,6 @@
             }
         }
 
-        // Make admin functions available globally
         window.viewAllSignups = viewAllSignups;
         window.exportSignupsToCSV = exportSignupsToCSV;
     </script>
